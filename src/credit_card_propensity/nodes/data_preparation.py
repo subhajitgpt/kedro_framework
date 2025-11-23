@@ -1,12 +1,12 @@
 def prepare_data(raw_data):
     """
-    Sample data preparation node: cleans and prepares raw data.
+    Data preparation node using Spark DataFrame.
     Args:
-        raw_data (pandas.DataFrame): Raw input data.
+        raw_data (pyspark.sql.DataFrame): Raw input Spark DataFrame.
     Returns:
-        pandas.DataFrame: Cleaned and feature-engineered data.
+        pyspark.sql.DataFrame: Cleaned and feature-engineered Spark DataFrame.
     """
-    # Example: drop missing values and select features
+    # Drop missing values and select features using Spark
     data = raw_data.dropna()
-    features = data[['age', 'income', 'credit_score']]
+    features = data.select('age', 'income', 'credit_score')
     return features
