@@ -1,10 +1,7 @@
+
 def train_model(prepared_data):
     """
-    Sample machine learning node: trains a simple classifier.
-    Args:
-        prepared_data (pandas.DataFrame): Feature-engineered data.
-    Returns:
-        object: Trained model (dummy for example).
+    Train a simple classifier (dummy example).
     """
     from sklearn.linear_model import LogisticRegression
     import numpy as np
@@ -13,3 +10,19 @@ def train_model(prepared_data):
     model = LogisticRegression()
     model.fit(prepared_data, y)
     return model
+
+def accuracy_metrics(model, X, y):
+    """
+    Calculate accuracy metrics for the model.
+    """
+    from sklearn.metrics import accuracy_score
+    y_pred = model.predict(X)
+    acc = accuracy_score(y, y_pred)
+    return {"accuracy": acc}
+
+def model_inference(model, X):
+    """
+    Perform inference using the trained model.
+    """
+    y_pred = model.predict(X)
+    return y_pred
